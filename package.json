@@ -25,9 +25,10 @@
     "moleculer-repl": "^0.6.6"
   },
   "dependencies": {
+    "moleculer": "^0.14.16",
     "moleculer-web": "^0.10.2",
     "nats": "^2.2.0",
-    "moleculer": "^0.14.16"
+    "x-ray": "^2.3.4"
   },
   "engines": {
     "node": ">= 12.x.x"
