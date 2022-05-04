@@ -94,8 +94,12 @@ module.exports = {
 				mappingPolicy: "all", // Available values: "all", "restrict"
 
 				// Enable/disable logging
-				logging: true
-			}
+				logging: true,
+
+				cors: {
+					origin: ["http://localhost:80"],
+				},
+			},
 		],
 
 		// Do not log client side errors (does not log an error response when the error.code is 400<=X<500)
