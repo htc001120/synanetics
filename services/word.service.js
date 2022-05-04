@@ -1,5 +1,7 @@
 "use strict";
 
+const xray = require("x-ray")();
+
 /**
  * @typedef {import('moleculer').Context} Context Moleculer's Context
  */
@@ -29,7 +31,8 @@ module.exports = {
 			/** @param {Context} ctx  */
 			async handler(ctx) {
 				const url = ctx.params.url;
-				return url;
+				const content = await this.fetchUrl(decodeURIComponent(url));
+				return this.countWord(content);
 			},
 		},
 	},
@@ -42,7 +45,16 @@ module.exports = {
 	/**
 	 * Methods
 	 */
-	methods: {},
+	methods: {
+		fetchUrl: async function (url) {
+			console.log(url);
+			return xray(url, "body");
+		},
+		countWord: function (content) {
+			const words = content.trim().split(/\s+/);
+			return words.length;
+		},
+	},
 
 	/**
 	 * Service created lifecycle event handler
